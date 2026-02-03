@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const projects = [
@@ -32,12 +32,9 @@ export default function Projects() {
 
       <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
         {projects.map((p, i) => (
+        <Link key={i} href={p.link} target="_blank">
           <motion.div
-            key={i}
             className="glass p-6 rounded-2xl hover:shadow-neon transition"
-            href={p.link}
-            target="_blank"
-            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 }}
@@ -46,6 +43,7 @@ export default function Projects() {
             <p className="text-gray-300 mt-3">{p.desc}</p>
             <p className="text-sm mt-3 text-purple-400">{p.tech}</p>
           </motion.div>
+         </Link>
         ))}
       </div>
     </section>
